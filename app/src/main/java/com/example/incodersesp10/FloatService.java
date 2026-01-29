@@ -94,7 +94,7 @@ public class FloatService extends Service
 	
 	
 	
-	private LayoutParams getParams()
+	public LayoutParams getParams()
 	{
 		LayoutParams wmParams = new LayoutParams();
 		wmParams.type = LayoutParams.TYPE_SYSTEM_OVERLAY;   			// Set window type

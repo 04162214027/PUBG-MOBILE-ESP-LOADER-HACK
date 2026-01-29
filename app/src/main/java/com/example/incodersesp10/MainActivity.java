@@ -86,36 +86,31 @@ public class MainActivity extends Activity implements View.OnClickListener
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void onClick(View v)
     {
-        switch (v.getId())
-        {
-            case R.id.b01:
-                if (!isDisplay && !isMenuDis)
-                    ShowFloatWindow();
-                //startService(new Intent(this,FloatingService.class));
-                Toast.makeText(MainActivity.this,"Service Started",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.b02:
-                if (isDisplay)
+        int id = v.getId();
+        if (id == R.id.b01) {
+            if (!isDisplay && !isMenuDis)
+                ShowFloatWindow();
+            //startService(new Intent(this,FloatingService.class));
+            Toast.makeText(MainActivity.this,"Service Started",Toast.LENGTH_LONG).show();
+        } else if (id == R.id.b02) {
+            if (isDisplay)
+            {
+                mwindow.removeView(mbutton);
+                isDisplay = false;
+                if (isMenuDis)
                 {
-                    mwindow.removeView(mbutton);
-                    isDisplay = false;
-                    if (isMenuDis)
-                    {
-                        mwMenu.removeView(dis);
-                        isMenuDis = false;
-                    }
+                    mwMenu.removeView(dis);
+                    isMenuDis = false;
                 }
-                else
+            }
+            else
+            {
+                if (isMenuDis)
                 {
-                    if (isMenuDis)
-                    {
-                        mwMenu.removeView(dis);
-                        isMenuDis = false;
-                    }
+                    mwMenu.removeView(dis);
+                    isMenuDis = false;
                 }
-                break;
-            default:
-                //Toast.makeText(MainActivity.this,v.getId(),Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -361,94 +356,89 @@ public class MainActivity extends Activity implements View.OnClickListener
         @Override
         public void onCheckedChanged(CompoundButton p1, boolean isChecked)
         {
-            switch (p1.getId())
-            {
+            int id = p1.getId();
 
-                case R.id.s1:
-                    if (isChecked)
-                    {
-                        //TODO
+            if (id == R.id.s1) {
+                if (isChecked)
+                {
+                    //TODO
 
-                        ExecuteElf("su -c /data/nc/PUBG");
-                        //TODO
-                        Date.setA("Open PUBG");
-                        FloatService.ShowFloat(MainActivity.this);
-                        Toast.makeText(MainActivity.this,"opened",Toast.LENGTH_LONG).show();
-                        bu1=true;
-                    }
-                    else
-                    {
-                        //TODO
+                    ExecuteElf("su -c /data/nc/PUBG");
+                    //TODO
+                    Date.setA("Open PUBG");
+                    FloatService.ShowFloat(MainActivity.this);
+                    Toast.makeText(MainActivity.this,"opened",Toast.LENGTH_LONG).show();
+                    bu1=true;
+                }
+                else
+                {
+                    //TODO
 
-                        //TODO
-                        FloatService.HideFloat();
-                        Toast.makeText(MainActivity.this,"closed",Toast.LENGTH_LONG).show();
-                        bu1=false;
-                    }
-                    break;
-                case R.id.fk:
-                    if(isChecked)
-                    {
-                        Date.setA("Show box");
-                        FloatService.ShowFloat(MainActivity.this);
-                        Toast.makeText(MainActivity.this,"Opened",Toast.LENGTH_LONG).show();
-                        fkts=true;
-                    }
-                    else
-                    {
-                        FloatService.HideFloat();
-                        Toast.makeText(MainActivity.this,"Closed",Toast.LENGTH_LONG).show();
-                        fkts=false;
-                    }
-                    break;
-                case R.id.sx:
-                    if (isChecked)
-                    {
-                        //TODO
-                        Date.setA("Display rays");
+                    //TODO
+                    FloatService.HideFloat();
+                    Toast.makeText(MainActivity.this,"closed",Toast.LENGTH_LONG).show();
+                    bu1=false;
+                }
+            } else if (id == R.id.fk) {
+                if(isChecked)
+                {
+                    Date.setA("Show box");
+                    FloatService.ShowFloat(MainActivity.this);
+                    Toast.makeText(MainActivity.this,"Opened",Toast.LENGTH_LONG).show();
+                    fkts=true;
+                }
+                else
+                {
+                    FloatService.HideFloat();
+                    Toast.makeText(MainActivity.this,"Closed",Toast.LENGTH_LONG).show();
+                    fkts=false;
+                }
+            } else if (id == R.id.sx) {
+                if (isChecked)
+                {
+                    //TODO
+                    Date.setA("Display rays");
 
-                        //ExecuteElf("su -c /data/nc/hwz");
-                        FloatService.ShowFloat(MainActivity.this);
+                    //ExecuteElf("su -c /data/nc/hwz");
+                    FloatService.ShowFloat(MainActivity.this);
 
-                        //TODO
-                        Toast.makeText(MainActivity.this,"opened",Toast.LENGTH_LONG).show();
-                        xssx=true;
-                    }
-                    else
-                    {
-                        //TODO
+                    //TODO
+                    Toast.makeText(MainActivity.this,"opened",Toast.LENGTH_LONG).show();
+                    xssx=true;
+                }
+                else
+                {
+                    //TODO
 
-                        //TODO
-                        FloatService.HideFloat();
-                        Toast.makeText(MainActivity.this,"closed",Toast.LENGTH_LONG).show();
-                        xssx=false;
-                    }
-                    break;
-                case R.id.wp:
-                    if (isChecked)
-                    {
-                        //TODO
-                        Date.setA("Show items");
+                    //TODO
+                    FloatService.HideFloat();
+                    Toast.makeText(MainActivity.this,"closed",Toast.LENGTH_LONG).show();
+                    xssx=false;
+                }
+            } else if (id == R.id.wp) {
+                if (isChecked)
+                {
+                    //TODO
+                    Date.setA("Show items");
 
 
-                      //  ExecuteElf("su -c /data/nc/nwz");
-                        FloatService.ShowFloat(MainActivity.this);
+                  //  ExecuteElf("su -c /data/nc/nwz");
+                    FloatService.ShowFloat(MainActivity.this);
 
 
-                        //TODO
-                        Toast.makeText(MainActivity.this,"Opened",Toast.LENGTH_LONG).show();
-                        xswp=true;
-                    }
-                    else
-                    {
-                        //TODO
-                        FloatService.HideFloat();
+                    //TODO
+                    Toast.makeText(MainActivity.this,"Opened",Toast.LENGTH_LONG).show();
+                    xswp=true;
+                }
+                else
+                {
+                    //TODO
+                    FloatService.HideFloat();
 
-                        //TODO
-                        Toast.makeText(MainActivity.this,"Closed",Toast.LENGTH_LONG).show();
-                        xswp=false;
-                    }
-                    break;
+                    //TODO
+                    Toast.makeText(MainActivity.this,"Closed",Toast.LENGTH_LONG).show();
+                    xswp=false;
+                }
             }
             //UpdateSwitchButton();
         }
